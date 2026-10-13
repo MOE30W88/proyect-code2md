@@ -1,37 +1,42 @@
-# respaldo-js (proyecto code2md)
+# 📂 ProyecCode2MD
 
-> Genera un respaldo estructurado de tu código y recursos visuales en dos archivos Markdown independientes sin dependencias externas.
-
----
-
-## 📌 Descripción
-
-Esta herramienta analiza tu proyecto y separa automáticamente el código fuente de los recursos pesados (como archivos SVG). Produce dos archivos Markdown limpios con metadatos, árbol de carpetas e índice detallado, facilitando el respaldo rápido o la alimentación de contexto limpio a modelos de Lenguaje / Inteligencia Artificial.
-
-### ✨ Características principales
-
-- **Sin dependencias externas**: Funciona exclusivamente con módulos nativos de Node.js.
-- **División inteligente**:
-  - `respaldo-codigo.md`: Contiene archivos `.html`, `.css`, `.js`, `.json`, `.txt`, etc.
-  - `respaldo-iconos.md`: Contiene archivos `.svg` separados por carpeta.
-- **Manejo inteligente de vallas**: Ajusta dinámicamente las delimitaciones de bloques de código (```) para prevenir rupturas sintácticas si tu código incluye archivos Markdown.
-- **Árbol e índice de contenido**: Incluye metadatos de fecha, tamaño total y un árbol visual de directorios.
-- **Control de tamaño**: Omite archivos que superen los 400 KB para evitar archivos excesivamente grandes o saturación de memoria.
-- **Ignorado automático**: Excluye carpetas como `node_modules`, `.git`, `.vscode` y los propios archivos de respaldo.
+Una utilidad ligera y robusta basada en **Node.js (módulos nativos)** diseñada para automatizar la documentación de proyectos de software. Convierte el código fuente, los recursos y la estructura general de cualquier repositorio en archivos Markdown limpios, estructurados y **optimizados para Modelos de Lenguaje (LLMs/IA)**.
 
 ---
 
-## 🚀 Uso rápido
+## 🚀 Características Principales
 
-### Requisitos previos
+- **Cero Dependencias Externas:** Utiliza únicamente módulos nativos de Node.js (`fs`, `path`, `readline`).
+- **Optimizado para IA:** Inyecta automáticamente instrucciones de contexto, metadatos, stack tecnológico (leyendo el `package.json`) y estimación de tokens para que las IA procesen el código con máxima eficiencia.
+- **Separación Inteligente de Contenido:**
+  - `respaldo-codigo.md`: Lógica del proyecto (HTML, CSS, JS, JSON, MD) con árboles de archivos e índice con conteo de tokens.
+  - `respaldo-iconos.md`: Concentrado exclusivo de recursos SVG.
+  - `respaldo-estructura.md`: Mapa jerárquico completo de directorios y rutas.
+- **Filtros Automáticos:** Omite directorios pesados (`node_modules`, `.git`, `.vscode`, etc.), archivos de bloqueo y la propia carpeta de salida.
+- **Ejecución con 1 Clic:** Incluye un script por lotes (`.bat`) interactivo para seleccionar cualquier proyecto mediante la ruta.
 
-- Tener instalado **Node.js** (versión 12 o superior recomendada).
+---
 
-### Ejecución
+## 🛠️ Cómo Utilizarlo
 
-1. Coloca el archivo `respaldo.js` en la raíz de tu proyecto.
-2. Abre tu terminal en esa carpeta y ejecuta:
+1. Asegúrate de tener instalado **Node.js** en tu equipo.
+2. Coloca el script `respaldo.js` y el archivo ejecutable `ejecutar.bat` en tu directorio de trabajo.
+3. Haz doble clic en **`ejecutar.bat`** (o ejecuta `node respaldo.js` en tu terminal).
+4. Ingresa o arrastra la ruta de la carpeta raíz del proyecto que deseas respaldar.
+5. Se creará automáticamente una carpeta llamada **`archivos .md creados`** dentro del proyecto analizado con los tres archivos de respaldo listos.
 
-```bash
-node respaldo.js
-```
+---
+
+## 📂 Estructura de Salida
+
+Los archivos generados dentro de `archivos .md creados/` siguen esta estructura:
+
+- **`respaldo-codigo.md`** → Código fuente con metadatos, árbol y bloques formateados.
+- **`respaldo-iconos.md`** → Inventario de archivos vectoriales (SVG).
+- **`respaldo-estructura.md`** → Árbol general y listado completo de rutas.
+
+---
+
+## 📜 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
